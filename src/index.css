@@ -1,0 +1,225 @@
+@import "tailwindcss";
+
+@theme {
+  /* Backgrounds & Surfaces */
+  --color-background: #0f131d;
+  --color-surface: #0f131d;
+  --color-surface-dim: #0f131d;
+  --color-surface-bright: #353944;
+  --color-surface-container-lowest: #0a0e18;
+  --color-surface-container-low: #171b26;
+  --color-surface-container: #1c1f2a;
+  --color-surface-container-high: #262a35;
+  --color-surface-container-highest: #313540;
+  --color-surface-variant: #313540;
+
+  /* Primary */
+  --color-primary: #c0c1ff;
+  --color-primary-container: #8083ff;
+  --color-on-primary: #1000a9;
+  --color-on-primary-container: #0d0096;
+  --color-primary-fixed: #e1e0ff;
+  --color-primary-fixed-dim: #c0c1ff;
+  --color-on-primary-fixed: #07006c;
+  --color-on-primary-fixed-variant: #2f2ebe;
+
+  /* Secondary */
+  --color-secondary: #d2bbff;
+  --color-secondary-container: #6001d1;
+  --color-on-secondary: #3f008e;
+  --color-on-secondary-container: #c9aeff;
+  --color-secondary-fixed: #eaddff;
+  --color-secondary-fixed-dim: #d2bbff;
+  --color-on-secondary-fixed: #25005a;
+  --color-on-secondary-fixed-variant: #5a00c6;
+
+  /* Tertiary */
+  --color-tertiary: #4cd7f6;
+  --color-tertiary-container: #009eb9;
+  --color-on-tertiary: #003640;
+  --color-on-tertiary-container: #002f38;
+  --color-tertiary-fixed: #acedff;
+  --color-tertiary-fixed-dim: #4cd7f6;
+  --color-on-tertiary-fixed: #001f26;
+  --color-on-tertiary-fixed-variant: #004e5c;
+
+  /* Text */
+  --color-on-surface: #dfe2f1;
+  --color-on-surface-variant: #c7c4d7;
+  --color-on-background: #dfe2f1;
+  --color-outline: #908fa0;
+  --color-outline-variant: #464554;
+  --color-muted: #908fa0;
+
+  /* Error */
+  --color-error: #ffb4ab;
+  --color-error-container: #93000a;
+  --color-on-error: #690005;
+  --color-on-error-container: #ffdad6;
+
+  /* Inverse */
+  --color-inverse-surface: #dfe2f1;
+  --color-inverse-on-surface: #2c303b;
+  --color-inverse-primary: #494bd6;
+  --color-surface-tint: #c0c1ff;
+
+  /* Fonts */
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-body-sm: "Plus Jakarta Sans", sans-serif;
+  --font-body-md: "Plus Jakarta Sans", sans-serif;
+  --font-body-lg: "Plus Jakarta Sans", sans-serif;
+  --font-headline-sm: "Plus Jakarta Sans", sans-serif;
+  --font-headline-md: "Plus Jakarta Sans", sans-serif;
+  --font-headline-lg: "Plus Jakarta Sans", sans-serif;
+  --font-display: "Plus Jakarta Sans", sans-serif;
+  --font-label-sm: "Inter", sans-serif;
+  --font-label-md: "Inter", sans-serif;
+  --font-metric-display: "Inter", sans-serif;
+  --font-metric-sm: "Inter", sans-serif;
+
+  /* Font Sizes */
+  --text-body-sm: 0.8125rem;
+  --text-body-md: 0.9375rem;
+  --text-body-lg: 1.125rem;
+  --text-headline-sm: 1.25rem;
+  --text-headline-md: 1.5rem;
+  --text-headline-lg: 2.25rem;
+  --text-label-sm: 0.75rem;
+  --text-label-md: 0.875rem;
+  --text-display: 3.5rem;
+  --text-metric-display: 2rem;
+  --text-metric-sm: 1.125rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #0f131d;
+  color: #dfe2f1;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  overscroll-behavior: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Accessible focus ring for keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Remove default outline when using mouse/pointer if not focus-visible */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Skip link styling for keyboard navigation */
+.skip-to-content {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-surface-container-highest);
+  color: var(--color-on-surface);
+  border: 2px solid var(--color-primary);
+  border-radius: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  transition: top 0.2s ease-in-out;
+}
+
+.skip-to-content:focus {
+  top: 1rem;
+}
+
+/* Reduced motion preference support (OS + in-app setting) */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html[data-reduced-motion="true"] *,
+html[data-reduced-motion="true"] *::before,
+html[data-reduced-motion="true"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* High contrast borders support */
+html[data-high-contrast="true"] .border,
+html[data-high-contrast="true"] [class*="border-"] {
+  border-color: rgba(223, 226, 241, 0.35) !important;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #464554;
+  border-radius: 10px;
+}
+
+::selection {
+  background: #8083ff;
+  color: #0f131d;
+}
+
+/* Print Certificate Media Styles */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  /* Hide app navigation, headers, footers, and modal chrome */
+  nav,
+  aside,
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Print certificate document */
+  .certificate-document {
+    background: #ffffff !important;
+    color: #111827 !important;
+    box-shadow: none !important;
+    border: 3px double #374151 !important;
+    border-radius: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 2rem !important;
+    margin: 0 auto !important;
+    page-break-inside: avoid;
+  }
+
+  .certificate-document * {
+    color: #111827 !important;
+    text-shadow: none !important;
+  }
+
+  .certificate-document .bg-surface-container\/60 {
+    background: #f3f4f6 !important;
+    border-color: #d1d5db !important;
+  }
+}
